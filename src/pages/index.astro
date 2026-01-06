@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Immagina di avere i dati qui, o importati da un file JSON/TS separato
+const projects = [
+  { title: "Sito E-commerce", desc: "React, Node.js, MongoDB", link: "#" },
+  { title: "Algoritmo AI", desc: "Python, TensorFlow", link: "#" },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Portfolio | Tuo Nome">
+	<main class="max-w-4xl mx-auto px-4 py-12">
+        
+        <!-- Hero Section -->
+        <section id="chi-sono" class="mb-20 text-center">
+            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+                Ciao, sono [Tuo Nome]
+            </h1>
+            <p class="text-xl text-slate-300 mb-8">
+                Studente di Informatica & Full Stack Developer in divenire.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="https://github.com/tuo-username" class="bg-slate-800 px-6 py-2 rounded-lg hover:bg-slate-700 transition">GitHub</a>
+                <a href="mailto:tuamail@example.com" class="bg-blue-600 px-6 py-2 rounded-lg hover:bg-blue-700 transition">Contattami</a>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="progetti">
+            <h2 class="text-3xl font-bold mb-8 border-l-4 border-blue-500 pl-4">I miei Progetti</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {projects.map((project) => (
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500 transition shadow-lg">
+                        <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
+                        <p class="text-slate-400 mb-4">{project.desc}</p>
+                        <a href={project.link} class="text-blue-400 hover:underline text-sm">Vedi codice &rarr;</a>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+	</main>
 </Layout>
